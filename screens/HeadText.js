@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, ScrollView } from 'react-native'
-import { content } from '../companents/headTextContent'
+import { content } from '../contents/headTextContent'
 
 const HeadText = () => {
+
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.text}>
+    <ScrollView style={[styles.container, { backgroundColor: bgColor }]}>
+      <Text style={[styles.text, { fontSize: fontSize, color: color }]}>
         {
           content
         }

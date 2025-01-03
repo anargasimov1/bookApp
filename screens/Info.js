@@ -4,7 +4,11 @@ import React from 'react'
 const Info = () => {
   return (
     <View>
-      <Text>Info</Text>
+      <Text>
+
+        Burada Müəllif və tətibatçı haqqında məlumat olacaq
+
+      </Text>
     </View>
   )
 }

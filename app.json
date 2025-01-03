@@ -19,10 +19,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/ebook.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anargasimov.book"
     },
     "web": {
       "favicon": "./assets/ebook.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e976fa3a-29cf-498b-b9ee-6461981d46ed"
+      }
     }
   }
 }

@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { content } from '../companents/content'
+import React, { useEffect, useState } from 'react'
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { content } from '../contents/content'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Page = ({ route }) => {
 
     const { index } = route.params
     const [currentPage, setCurrentPage] = useState(index)
+    const [color, setColor] = useState('black')
+    const [background, setBaclground] = useState('white')
+    const [fontStyle, setFontStyle] = useState('serif')
+    const [fontSize, setFontSize] = useState(16)
 
     const conutMinus = () => {
         if (currentPage > 0) {
@@ -15,30 +20,70 @@ const Page = ({ route }) => {
     }
 
     const conutPlus = () => {
-        if (currentPage < 14) {
+        if (currentPage < 99) {
             setCurrentPage(currentPage + 1)
         }
     }
 
+
+    const getColorStronge = async () => {
+        let color = await AsyncStorage.getItem('color')
+        if (color) {
+            setColor(color)
+        }
+    }
+
+    const getBgColorStronge = async () => {
+        let bgColor = await AsyncStorage.getItem('bgColor')
+        if (bgColor) {
+            setBaclground(bgColor)
+        }
+    }
+
+
+    const getFontStyle = async () => {
+        let fontFamily = await AsyncStorage.getItem('fontStyle')
+        if (fontFamily)
+            setFontStyle(fontFamily)
+    }
+
+    const getSize = async () => {
+        let size = await AsyncStorage.getItem('size')
+        if (size) {
+            setFontSize(Number(size))
+
+        }
+
+    }
+
+
+    useEffect(() => {
+        getColorStronge(),
+            getBgColorStronge(),
+            getFontStyle(),
+            getSize();
+    }, [])
+
+
     return (
         <>
-            <View style={styles.container}>
+            <ScrollView style={[styles.container, { backgroundColor: background }]}>
 
-                <Text style={styles.text}>
+                <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize }]}>
                     {
                         content[currentPage].contentAz
                     }
                 </Text>
 
-                <Text style={{ height: 30 }}></Text>
+                <Text style={{ height: 10, textAlign: 'center' }}></Text>
 
-                <Text style={styles.text}>
+                <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize }]}>
                     {
                         content[currentPage].contentAr
                     }
                 </Text>
 
-            </View>
+            </ScrollView>
 
             <View style={styles.buttons}>
 
@@ -60,11 +105,14 @@ export default Page
 const styles = StyleSheet.create({
     container: {
         paddingTop: 25,
-        paddingLeft: 5
+        paddingLeft: 5,
+        marginBottom: 70,
+
     },
 
     text: {
-        fontSize: 18
+        fontSize: 18,
+        marginBottom: 25
     },
     buttons: {
         width: '100%',

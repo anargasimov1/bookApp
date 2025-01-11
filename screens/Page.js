@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, ImageBackground, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { content } from '../contents/content'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { DebugInstructions } from 'react-native/Libraries/NewAppScreen'
 
 const Page = ({ route }) => {
 
@@ -67,23 +68,28 @@ const Page = ({ route }) => {
 
     return (
         <>
-            <ScrollView style={[styles.container, { backgroundColor: background }]}>
+            <ScrollView style={{ backgroundColor: background }}>
 
-                <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize }]}>
-                    {
-                        content[currentPage].contentAz
-                    }
-                </Text>
+                <ImageBackground
+                    style={styles.peper}
+                    source={background == "white" && require('./../assets/peper.png')}>
+                    <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize }]}>
+                        {
+                            content[currentPage].contentAz
+                        }
+                    </Text>
 
-                <Text style={{ height: 10, textAlign: 'center' }}></Text>
+                    <Text style={{ height: 10, textAlign: 'center' }}></Text>
 
-                <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize }]}>
-                    {
-                        content[currentPage].contentAr
-                    }
-                </Text>
+                    <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize }]}>
+                        {
+                            content[currentPage].contentAr
+                        }
+                    </Text>
+                </ImageBackground>
 
             </ScrollView>
+
 
             <View style={styles.buttons}>
 
@@ -95,7 +101,9 @@ const Page = ({ route }) => {
                     <AntDesign name='rightcircle' style={styles.buttonIcon} />
                 </Pressable>
 
+
             </View>
+
         </>
     )
 }
@@ -103,13 +111,6 @@ const Page = ({ route }) => {
 export default Page
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 25,
-        paddingLeft: 5,
-        marginBottom: 70,
-
-    },
-
     text: {
         fontSize: 18,
         marginBottom: 25
@@ -121,7 +122,8 @@ const styles = StyleSheet.create({
         bottom: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+
 
 
     },
@@ -131,5 +133,12 @@ const styles = StyleSheet.create({
     buttonIcon: {
         fontSize: 40,
         color: '#4a58d3'
+    }
+    ,
+    peper: {
+        flex: 1,
+        height: Dimensions.get('screen').height,
+        paddingHorizontal: 8,
+        paddingTop: 55,
     }
 })

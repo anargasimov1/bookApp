@@ -22,7 +22,7 @@ const FontSize = ({ setFontSize }) => {
                     return (
                         <Pressable onPress={() => newSize(i)} key={index} style={styles.button}>
                             <Text style={styles.text}>
-                                  {i} pikcel
+                                {i} px
                             </Text>
                         </Pressable>
                     )
@@ -37,14 +37,18 @@ export default FontSize
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        backgroundColor: 'white',
+        backgroundColor: 'lightgrey',
         width: '70%',
-        height: '35%',
+        height: '36%',
         left: 50,
-        top: 150,
+        top: 140,
         gap: 10,
-        paddingLeft: 15,
-        zIndex: 20
+        paddingLeft: 25,
+        paddingTop:10,
+        zIndex: 20,
+        borderWidth: 3,
+        borderRadius: 25,
+        borderColor:'#efebe2'
     },
     button: {
         width: 128,

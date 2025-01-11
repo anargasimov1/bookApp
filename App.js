@@ -14,12 +14,13 @@ const App = () => {
 
     <NavigationContainer>
       <Stack.Navigator>
+
         <Stack.Screen options={{ headerShown: false }} name="home" component={Homepage} />
-        <Stack.Screen options={{ title: 'geri' }} name="head" component={HeadText} />
-        <Stack.Screen name="info" component={Info} />
-        <Stack.Screen name="settings" component={Settings} />
-        <Stack.Screen name='pages' component={Pages} />
-        <Stack.Screen name='page' component={Page} />
+        <Stack.Screen options={{ title: 'Ön Söz' }} name="head" component={HeadText} />
+        <Stack.Screen options={{ title: 'Müəllif Haqqında' }} name="info" component={Info} />
+        <Stack.Screen options={{ title: 'Sazlamalar' }} name="settings" component={Settings} />
+        <Stack.Screen options={{ title: 'Mündəricat' }} name='pages' component={Pages} />
+        <Stack.Screen options={{ headerShown: false }} name='page' component={Page} />
 
       </Stack.Navigator>
     </NavigationContainer>

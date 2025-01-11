@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Dimensions, ImageBackground, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { content } from '../contents/content'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { DebugInstructions } from 'react-native/Libraries/NewAppScreen'
 
 const Page = ({ route }) => {
 
@@ -35,26 +34,35 @@ const Page = ({ route }) => {
     }
 
     const getBgColorStronge = async () => {
-        let bgColor = await AsyncStorage.getItem('bgColor')
-        if (bgColor) {
-            setBaclground(bgColor)
+        try {
+            let bgColor = await AsyncStorage.getItem('bgColor')
+            if (bgColor) {
+                setBaclground(bgColor)
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 
 
     const getFontStyle = async () => {
-        let fontFamily = await AsyncStorage.getItem('fontStyle')
-        if (fontFamily)
-            setFontStyle(fontFamily)
+        try {
+            let fontFamily = await AsyncStorage.getItem('fontStyle')
+            if (fontFamily)
+                setFontStyle(fontFamily)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const getSize = async () => {
-        let size = await AsyncStorage.getItem('size')
-        if (size) {
-            setFontSize(Number(size))
-
+        try {
+            let size = await AsyncStorage.getItem('size')
+            if (size)
+                setFontSize(Number(size))
+        } catch (error) {
+            console.log(error)
         }
-
     }
 
 
@@ -68,29 +76,32 @@ const Page = ({ route }) => {
 
     return (
         <>
-            <ScrollView style={{ backgroundColor: background }}>
+            <ImageBackground
+                style={styles.peper}
+                source={background === "white" && require('./../assets/peper.png')}>
 
-                <ImageBackground
-                    style={styles.peper}
-                    source={background == "white" && require('./../assets/peper.png')}>
+                <ScrollView style={background === "black" && { backgroundColor: background }}>
+
+
                     <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize }]}>
                         {
                             content[currentPage].contentAz
                         }
                     </Text>
 
-                    <Text style={{ height: 10, textAlign: 'center' }}></Text>
-
                     <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize }]}>
                         {
                             content[currentPage].contentAr
+
                         }
+
                     </Text>
-                </ImageBackground>
-
-            </ScrollView>
 
 
+
+                </ScrollView>
+
+            </ImageBackground >
             <View style={styles.buttons}>
 
                 <Pressable style={styles.button} onPress={conutMinus}>
@@ -100,6 +111,7 @@ const Page = ({ route }) => {
                 <Pressable style={styles.button} onPress={conutPlus}>
                     <AntDesign name='rightcircle' style={styles.buttonIcon} />
                 </Pressable>
+
 
 
             </View>
@@ -113,13 +125,13 @@ export default Page
 const styles = StyleSheet.create({
     text: {
         fontSize: 18,
-        marginBottom: 25
+        paddingBottom: 50
     },
     buttons: {
         width: '100%',
         height: 50,
         position: 'absolute',
-        bottom: 10,
+        bottom: -8,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
@@ -137,8 +149,7 @@ const styles = StyleSheet.create({
     ,
     peper: {
         flex: 1,
-        height: Dimensions.get('screen').height,
-        paddingHorizontal: 8,
+
         paddingTop: 55,
     }
 })

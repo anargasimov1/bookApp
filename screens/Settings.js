@@ -11,9 +11,13 @@ const Settings = () => {
     const [fontSize, setFontSize] = useState(false)
 
     async function getBgColor() {
-        let bgColor = await AsyncStorage.getItem('bgColor');
-        if (bgColor) {
-            setBgColor(bgColor)
+        try {
+            let bgColor = await AsyncStorage.getItem('bgColor');
+            if (bgColor) {
+                setBgColor(bgColor)
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -23,16 +27,24 @@ const Settings = () => {
 
 
     const setDarkMode = async () => {
-        await AsyncStorage.setItem('color', 'white')
-        await AsyncStorage.setItem('bgColor', 'black')
-        getBgColor()
+        try {
+            await AsyncStorage.setItem('color', 'white')
+            await AsyncStorage.setItem('bgColor', 'black')
+            getBgColor()
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
     const setLightMode = async () => {
-        await AsyncStorage.setItem('color', 'black')
-        await AsyncStorage.setItem('bgColor', 'white')
-        getBgColor()
+        try {
+            await AsyncStorage.setItem('color', 'black')
+            await AsyncStorage.setItem('bgColor', 'white')
+            getBgColor()
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 

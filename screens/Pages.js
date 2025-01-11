@@ -8,10 +8,14 @@ const Pages = ({ navigation }) => {
     const [bgColor, setBgColor] = useState('white')
 
     const getBgColor = async () => {
-        let bgColor = await AsyncStorage.getItem('bgColor')
-        if (bgColor) {
-            setBgColor(bgColor)
+        try {
+            let bgColor = await AsyncStorage.getItem('bgColor')
+            if (bgColor)
+                setBgColor(bgColor)
+        } catch (error) {
+            console.log(error)
         }
+
     }
 
     useEffect(() => {
@@ -28,8 +32,9 @@ const Pages = ({ navigation }) => {
                         <ImageBackground
                             source={require('../assets/peper.png')}
                             style={styles.image}
+                            key={i.page}
                         >
-                            <Pressable style={styles.button} key={i.page} onPress={() => navigation.replace('page', { index: index })}>
+                            <Pressable style={styles.button} onPress={() => navigation.replace('page', { index: index })}>
                                 <Text style={styles.text}>
                                     Fəsil {index + 1}
                                 </Text>
@@ -47,10 +52,7 @@ export default Pages
 
 const styles = StyleSheet.create({
     container: {
-     
         marginBottom: 15,
-
-
     },
     text: {
         fontSize: 19,
@@ -59,13 +61,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     button: {
-        // backgroundColor: '#b3c0f6',
         height: 35,
         justifyContent: 'center',
         marginBottom: 20
     },
     image: {
         width: Dimensions.get('screen').width,
-        paddingTop:15
+        paddingTop: 15
     }
 })

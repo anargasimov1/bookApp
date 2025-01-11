@@ -1,19 +1,35 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import CheckBox from 'react-native-check-box'
-import React, { useState } from 'react'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import React, { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Fonts = ({ setFonts }) => {
 
     const fonts = ['roboto', 'cursive', 'serif', 'sans-serif']
 
+    const [font, setFont] = useState('serif')
+
     const setFontFamilyStronge = async par => {
-        await AsyncStorage.setItem('fontStyle', par);
+        try {
+            await AsyncStorage.setItem('fontStyle', par);
+        } catch (error) {
+            console.log(error)
+        }
         setFonts(false)
     }
 
+    useEffect(() => { getFont() }, [])
 
+
+    const getFont = async () => {
+        try {
+            let selectedFont = await AsyncStorage.getItem('fontStyle');
+            if (selectedFont)
+                setFont(selectedFont)
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
 
     return (
         <View style={styles.container}>
@@ -22,7 +38,7 @@ const Fonts = ({ setFonts }) => {
                 fonts.map((i, index) => {
                     return (
                         <Pressable key={index} onPress={() => setFontFamilyStronge(i)}>
-                            <Text style={{ fontFamily: i, fontSize: 16, marginTop: 15 }}>{index + 1}.İstədiyniz fontu seçin</Text>
+                            <Text style={[font === i && { color: 'red' }, { fontFamily: i, fontSize: 16, marginTop: 15 }]}>{index + 1}.İstədiyniz fontu seçin</Text>
                         </Pressable>
                     )
                 })

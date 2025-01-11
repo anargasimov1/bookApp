@@ -1,15 +1,26 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const FontSize = ({ setFontSize }) => {
 
     const sizes = [12, 14, 16, 18, 20, 22, 24]
+    const [size, setSize] = useState(16)
 
     async function newSize(par) {
         await AsyncStorage.setItem('size', JSON.stringify(par))
         setFontSize(false)
     }
+
+    async function getSize() {
+        let newSize = await AsyncStorage.getItem('size')
+        if (newSize)
+            setSize(Number(newSize))
+    }
+
+    useEffect(() => {
+        getSize()
+    }, [])
 
 
 
@@ -21,7 +32,7 @@ const FontSize = ({ setFontSize }) => {
                 sizes.map((i, index) => {
                     return (
                         <Pressable onPress={() => newSize(i)} key={index} style={styles.button}>
-                            <Text style={styles.text}>
+                            <Text style={[styles.text, size === i && { color: 'red' }]}>
                                 {i} px
                             </Text>
                         </Pressable>
@@ -44,11 +55,11 @@ const styles = StyleSheet.create({
         top: 140,
         gap: 10,
         paddingLeft: 25,
-        paddingTop:10,
+        paddingTop: 10,
         zIndex: 20,
         borderWidth: 3,
         borderRadius: 25,
-        borderColor:'#efebe2'
+        borderColor: '#efebe2'
     },
     button: {
         width: 128,

@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const FontSize = ({ setFontSize }) => {
 
@@ -32,13 +33,20 @@ const FontSize = ({ setFontSize }) => {
                 sizes.map((i, index) => {
                     return (
                         <Pressable onPress={() => newSize(i)} key={index} style={styles.button}>
-                            <Text style={[styles.text, size === i && { color: 'red' }]}>
+                            <Text style={[styles.text, size === i && { color: 'green' }]}>
                                 {i} px
                             </Text>
+                            <MaterialIcons style={[styles.icon, size === i && { color: 'green' }]} name='check-circle' />
                         </Pressable>
                     )
                 })
             }
+
+            <Pressable onPress={() => setFontSize(false)} style={styles.closeButton}>
+                <Text style={styles.closeText}>
+                    Bağla
+                </Text>
+            </Pressable>
         </View>
     )
 }
@@ -48,27 +56,47 @@ export default FontSize
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        backgroundColor: 'lightgrey',
-        width: '70%',
-        height: '36%',
-        left: 50,
-        top: 140,
+        width: '100%',
+        height: '100%',
+        paddingLeft: 15,
         gap: 10,
-        paddingLeft: 25,
         paddingTop: 10,
         zIndex: 20,
-        borderWidth: 3,
-        borderRadius: 25,
-        borderColor: '#efebe2'
+        backgroundColor: 'white'
     },
     button: {
-        width: 128,
+        borderWidth: 0.5,
+        width: '90%',
+        paddingLeft: 15,
+        height: 50,
+        justifyContent: "space-between",
+        flexDirection: 'row',
+        alignItems: 'center'
+
 
     },
     text: {
         fontSize: 18,
         fontWeight: 'bold',
         color: '#3f5efb',
-        width: 125
+        width: "70%"
+    },
+    icon: {
+        fontSize: 27,
+        color: "#3f5efb"
+    }
+    ,
+    closeButton: {
+        width: "90%",
+        height: 50,
+        marginTop: 25,
+        justifyContent: 'center',
+        backgroundColor: '#b9e913'
+    },
+    closeText: {
+        fontSize: 23,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: '#071034'
     }
 })

@@ -13,7 +13,7 @@ const Info = () => {
 
 Bu kitab Azərbaycan Respublikasının Dini Qurumlarla İş üzrə Dövlət Komitəsinin 21.12.2009-cu il DK-594/T nömrəli icazə məktubuna əsasən nəşr olunub. 
 
-Tətbiqin tərtibaçısı:
+Tətbiqin tərtibatçısı:
 Anar Qasımov
 
 Təşəbbüskar:

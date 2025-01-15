@@ -54,25 +54,25 @@ const Settings = () => {
 
                 <Pressable onPress={() => setFontSize(true)} style={styles.button}>
                     <Text style={styles.text}>
-                        Şiriftin Ölçüsünü Dəyiş
+                        Hərflərin Ölçüsünü Dəyiş
                     </Text>
                 </Pressable>
 
                 <Pressable style={styles.button} onPress={() => setFonts(true)}>
                     <Text style={styles.text}>
-                        Şiriftin Stilni dəyiş
+                        Hərflərin Stilni dəyiş
                     </Text>
                 </Pressable>
 
                 <Pressable onPress={setLightMode} style={styles.button}>
                     <Text style={styles.text}>
-                        Gündüz
+                        Gündüz rejimi
                     </Text>
                 </Pressable>
 
                 <Pressable onPress={setDarkMode} style={styles.button}>
                     <Text style={styles.text}>
-                        Gecə
+                        Gecə rejimi
                     </Text>
                 </Pressable>
 
@@ -93,9 +93,9 @@ export default Settings;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
         gap: 20,
-        paddingTop: 150
+        paddingTop: 15,
+        paddingHorizontal: 15
 
     },
     text: {
@@ -105,12 +105,12 @@ const styles = StyleSheet.create({
         fontFamily: 'serif'
     },
     button: {
-        width: 250,
+        width: "auto",
         borderColor: '#8b95e6',
         borderWidth: 0.5,
-        height: 28,
+        height: 48,
         paddingLeft: 5,
-        borderRadius: 25
+        justifyContent:'center'
 
     }
 

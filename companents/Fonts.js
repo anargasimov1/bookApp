@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const Fonts = ({ setFonts }) => {
 
@@ -37,12 +38,18 @@ const Fonts = ({ setFonts }) => {
             {
                 fonts.map((i, index) => {
                     return (
-                        <Pressable key={index} onPress={() => setFontFamilyStronge(i)}>
-                            <Text style={[font === i && { color: 'red' }, { fontFamily: i, fontSize: 16, marginTop: 15 }]}>{index + 1}.İstədiyniz fontu seçin</Text>
+                        <Pressable style={styles.button} key={index} onPress={() => setFontFamilyStronge(i)}>
+                            <Text style={[font === i && { color: 'red' }, { fontFamily: i, fontSize: 19, marginTop: 15 }]}>{index + 1}.İstədiyniz fontu seçin</Text>
+                            <MaterialIcons style={[styles.icon, font === i && { color: 'green' }]} name='check-circle' />
                         </Pressable>
                     )
                 })
             }
+            <Pressable onPress={() => setFonts(false)} style={styles.closeButton}>
+                <Text style={styles.closeText}>
+                    Bağla
+                </Text>
+            </Pressable>
 
         </View>
     )
@@ -53,23 +60,39 @@ export default Fonts
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        backgroundColor: '#d4d6dc',
-        top: 150,
-        left: 30,
-        width: '80%',
-        height: '25%',
+        backgroundColor: 'white',
+        width: '100%',
+        height: '100%',
         paddingLeft: 20,
         paddingTop: 20,
-        borderRadius: 25
-    },
-    button: {
-        position: 'absolute',
-        right: -2,
-        top: -10,
-        width: 22
+        borderRadius: 25,
+        top: 0
     },
     icon: {
-        fontSize: 28,
-        color: 'red'
+        fontSize: 27,
+        color: "#3f5efb"
+    },
+    button: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        borderWidth: 0.5,
+        width: "95%",
+        marginBottom: 15,
+        alignItems: 'center',
+        height:50
+    }
+    ,
+    closeButton: {
+        width: "95%",
+        height: 50,
+        marginTop: 25,
+        justifyContent: 'center',
+        backgroundColor: '#b9e913'
+    },
+    closeText: {
+        fontSize: 23,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: '#071034'
     }
 })

@@ -89,7 +89,7 @@ const Page = ({ route }) => {
                         }
                     </Text>
 
-                    <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize }]}>
+                    <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize, textAlign: 'right' }]}>
                         {
                             content[currentPage].contentAr
 
@@ -97,11 +97,10 @@ const Page = ({ route }) => {
 
                     </Text>
 
-
-
                 </ScrollView>
 
             </ImageBackground >
+
             <View style={styles.buttons}>
 
                 <Pressable style={styles.button} onPress={conutMinus}>
@@ -112,10 +111,7 @@ const Page = ({ route }) => {
                     <AntDesign name='rightcircle' style={styles.buttonIcon} />
                 </Pressable>
 
-
-
             </View>
-
         </>
     )
 }
@@ -125,7 +121,8 @@ export default Page
 const styles = StyleSheet.create({
     text: {
         fontSize: 18,
-        paddingBottom: 50
+        paddingBottom: 50,
+        paddingHorizontal: 5
     },
     buttons: {
         width: '100%',
@@ -135,9 +132,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-
-
-
     },
     button: {
         width: 50
@@ -149,7 +143,6 @@ const styles = StyleSheet.create({
     ,
     peper: {
         flex: 1,
-
-        paddingTop: 55,
+        paddingTop: 25,
     }
 })

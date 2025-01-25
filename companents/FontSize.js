@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
@@ -9,22 +9,28 @@ const FontSize = ({ setFontSize }) => {
     const [size, setSize] = useState(16)
 
     async function newSize(par) {
-        await AsyncStorage.setItem('size', JSON.stringify(par))
+        try {
+            await AsyncStorage.setItem('size', JSON.stringify(par))
+        } catch (error) {
+            Alert.alert('xeta baş verdi!')
+        }
         setFontSize(false)
     }
 
     async function getSize() {
-        let newSize = await AsyncStorage.getItem('size')
-        if (newSize)
-            setSize(Number(newSize))
+        try {
+            let newSize = await AsyncStorage.getItem('size')
+            if (newSize)
+                setSize(Number(newSize))
+        } catch (error) {
+            Alert.alert("xeta baş verdi!")
+        }
+
     }
 
     useEffect(() => {
         getSize()
     }, [])
-
-
-
 
     return (
         <View style={styles.container}>

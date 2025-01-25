@@ -6,6 +6,7 @@ import Info from './screens/Info'
 import Pages from './screens/Pages'
 import Page from './screens/Page';
 import Settings from './screens/Settings'
+import Epilog from './screens/Epilog';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ const App = () => {
         <Stack.Screen options={{ title: 'Müəllif Haqqında' }} name="info" component={Info} />
         <Stack.Screen options={{ title: 'Sazlamalar' }} name="settings" component={Settings} />
         <Stack.Screen options={{ title: 'Mündəricat' }} name='pages' component={Pages} />
+        <Stack.Screen name='content' options={{ title: 'Epiloq' }} component={Epilog} />
         <Stack.Screen options={{ headerShown: false }} name='page' component={Page} />
 
       </Stack.Navigator>

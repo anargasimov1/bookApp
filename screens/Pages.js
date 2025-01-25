@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Dimensions, ImageBackground, Pressable, ScrollView, StyleSheet, Text } from 'react-native'
-import { content } from '../contents/content'
+import { Alert, Dimensions, ImageBackground, Pressable, ScrollView, StyleSheet, Text } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Pages = ({ navigation }) => {
@@ -13,7 +12,7 @@ const Pages = ({ navigation }) => {
             if (bgColor)
                 setBgColor(bgColor)
         } catch (error) {
-            console.log(error)
+            Alert.alert("xəta baş verdi!")
         }
 
     }
@@ -26,22 +25,19 @@ const Pages = ({ navigation }) => {
         <ScrollView style={[styles.container, { backgroundColor: bgColor }]}>
 
             {
-                content.map((i, index) => {
-
-                    return (
-                        <ImageBackground
-                            source={require('../assets/peper.png')}
-                            style={styles.image}
-                            key={i.page}
-                        >
-                            <Pressable style={styles.button} onPress={() => navigation.replace('page', { index: index })}>
-                                <Text style={styles.text}>
-                                    Fəsil {index + 1}
-                                </Text>
-                            </Pressable>
-                        </ImageBackground>
-                    )
-                })
+                Array.from({ length: 100 }).map((_, index) => (
+                    <ImageBackground
+                        source={require('../assets/peper.png')}
+                        style={styles.image}
+                        key={index}
+                    >
+                        <Pressable style={styles.button} onPress={() => navigation.replace('page', { index: index })}>
+                            <Text style={styles.text}>
+                                Fəsil {index + 1}
+                            </Text>
+                        </Pressable>
+                    </ImageBackground>
+                ))
             }
 
         </ScrollView>

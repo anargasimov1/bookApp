@@ -30,11 +30,18 @@ export default function Home({ navigation }) {
                         </Text>
                     </Pressable>
 
+                    <Pressable onPress={() => navigation.navigate('content')}>
+                        <Text style={styles.text}>
+                            Epiloq
+                        </Text>
+                    </Pressable>
+
                     <Pressable onPress={() => navigation.navigate('settings')}>
                         <Text style={styles.text}>
                             Sazlamalar
                         </Text>
                     </Pressable>
+
 
                 </View>
 

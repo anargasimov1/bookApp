@@ -16,7 +16,7 @@ const Page = ({ route }) => {
     const [fontSize, setFontSize] = useState(16)
 
     const CONTENTAZ = contetnAz.split("*");
-    const CONTENTAR = contentAr.split("*")
+    const CONTENTAR = contentAr.split("***")
 
     const conutMinus = () => {
         if (currentPage > 0) {
@@ -29,7 +29,6 @@ const Page = ({ route }) => {
             setCurrentPage(currentPage + 1)
         }
     }
-
 
     const getColorStronge = async () => {
         let color = await AsyncStorage.getItem('color')
@@ -48,7 +47,6 @@ const Page = ({ route }) => {
             console.log(error)
         }
     }
-
 
     const getFontStyle = async () => {
         try {
@@ -70,14 +68,12 @@ const Page = ({ route }) => {
         }
     }
 
-
     useEffect(() => {
         getColorStronge(),
             getBgColorStronge(),
             getFontStyle(),
             getSize();
     }, [])
-
 
     return (
         <>
@@ -109,16 +105,15 @@ const Page = ({ route }) => {
                         }
                     </View>
 
-
                     <Text style={{ color: "red", fontFamily: fontStyle, fontSize: fontSize, textAlign: 'right', marginBottom: 40 }}>
 
                         {
-                            CONTENTAR[currentPage].slice(0, 92)
+                            CONTENTAR[currentPage].slice(0, 90)
 
                         }
                         <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize, textAlign: 'right' }]}>
                             {
-                                CONTENTAR[currentPage].slice(93, CONTENTAR[currentPage].length)
+                                CONTENTAR[currentPage].slice(90, CONTENTAR[currentPage].length)
                             }
                         </Text>
 

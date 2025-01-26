@@ -4,7 +4,6 @@ export default function Home({ navigation }) {
 
     return (
         <>
-
             <ImageBackground
                 style={styles.container}
                 source={require('../assets/background.jpg')}
@@ -42,11 +41,9 @@ export default function Home({ navigation }) {
                         </Text>
                     </Pressable>
 
-
                 </View>
 
             </ImageBackground>
-
         </>
     );
 }

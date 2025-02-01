@@ -50,7 +50,7 @@ const FontSize = ({ setFontSize }) => {
 
             <Pressable onPress={() => setFontSize(false)} style={styles.closeButton}>
                 <Text style={styles.closeText}>
-                    Bağla
+                    İMTİNA
                 </Text>
             </Pressable>
         </View>
@@ -65,14 +65,14 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         paddingLeft: 15,
-        gap: 10,
-        paddingTop: 10,
+        gap: 15,
+        paddingTop: 15,
         zIndex: 20,
         backgroundColor: 'white'
     },
     button: {
         borderWidth: 0.5,
-        width: '90%',
+        width: '95%',
         paddingLeft: 15,
         height: 50,
         justifyContent: "space-between",
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     }
     ,
     closeButton: {
-        width: "90%",
+        width: "95%",
         height: 50,
         marginTop: 25,
         justifyContent: 'center',

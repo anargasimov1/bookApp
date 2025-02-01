@@ -16,7 +16,7 @@ const Page = ({ route }) => {
     const [fontSize, setFontSize] = useState(16)
 
     const CONTENTAZ = contetnAz.split("*");
-    const CONTENTAR = contentAr.split("***")
+    const CONTENTAR = contentAr.split("***");
 
     const conutMinus = () => {
         if (currentPage > 0) {
@@ -189,5 +189,4 @@ const styles = StyleSheet.create({
         margin: 5,
         opacity: 0.7
     }
-
 })

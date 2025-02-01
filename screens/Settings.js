@@ -47,7 +47,6 @@ const Settings = () => {
         }
     }
 
-
     return (
         <>
             <View style={[styles.container, { backgroundColor: bgColor }]}>
@@ -113,6 +112,5 @@ const styles = StyleSheet.create({
         justifyContent:'center'
 
     }
-
 });
 

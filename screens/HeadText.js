@@ -24,12 +24,13 @@ export default HeadText
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 17,
+    fontSize: 18,
     fontFamily: 'serif',
     fontStyle: 'italic',
     marginBottom: 25
   },
   imageBackground: {
     paddingTop: 25,
+    paddingHorizontal:5
   }
 })

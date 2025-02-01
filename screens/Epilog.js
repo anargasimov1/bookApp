@@ -5,6 +5,7 @@ import { epiloqueAz, epiloqAr } from '../contents/epiloque'
 const Epiloq = () => {
 
     return (
+        
         <ImageBackground source={require('../assets/peper.png')}>
             <ScrollView style={{ paddingHorizontal: 5 }}>
 

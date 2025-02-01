@@ -5,8 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const Fonts = ({ setFonts }) => {
 
-    const fonts = ['roboto', 'cursive', 'serif', 'sans-serif']
-
+    const fonts = ['roboto', 'cursive', 'serif', 'sans-serif', 'monospace', 'fantasy']
     const [font, setFont] = useState('serif')
 
     const setFontFamilyStronge = async par => {
@@ -20,7 +19,6 @@ const Fonts = ({ setFonts }) => {
 
     useEffect(() => { getFont() }, [])
 
-
     const getFont = async () => {
         try {
             let selectedFont = await AsyncStorage.getItem('fontStyle');
@@ -29,7 +27,6 @@ const Fonts = ({ setFonts }) => {
         } catch (error) {
             console.log(error)
         }
-
     }
 
     return (
@@ -39,19 +36,20 @@ const Fonts = ({ setFonts }) => {
                 fonts.map((i, index) => {
                     return (
                         <Pressable style={styles.button} key={index} onPress={() => setFontFamilyStronge(i)}>
-                            <Text style={[font === i && { color: 'red' }, { fontFamily: i, fontSize: 19, marginTop: 15 }]}>{index + 1}.İstədiyniz fontu seçin</Text>
+                            <Text style={[font === i && { color: 'red' }, { fontFamily: i, fontSize: 19 }]}>{index + 1}.İstədiyniz fontu seçin</Text>
                             <MaterialIcons style={[styles.icon, font === i && { color: 'green' }]} name='check-circle' />
                         </Pressable>
                     )
                 })
             }
+
             <Pressable onPress={() => setFonts(false)} style={styles.closeButton}>
                 <Text style={styles.closeText}>
-                    Bağla
+                    İMTİNA
                 </Text>
             </Pressable>
 
-        </View>
+        </View >
     )
 }
 
@@ -79,9 +77,8 @@ const styles = StyleSheet.create({
         width: "95%",
         marginBottom: 15,
         alignItems: 'center',
-        height:50
-    }
-    ,
+        height: 50
+    },
     closeButton: {
         width: "95%",
         height: 50,

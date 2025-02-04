@@ -98,22 +98,22 @@ const Page = ({ route }) => {
                                         <Text style={{ fontSize: 22, fontWeight: "bold", color: '#d0623b' }} key={index}>
                                             *
                                         </Text>
-                                        <Text>  </Text>
+                                        <Text></Text>
                                     </View>
                                 )
                             })
                         }
                     </View>
 
-                    <Text style={{ color: "red", fontFamily: fontStyle, fontSize: fontSize, textAlign: 'right', marginBottom: 40 }}>
+                    <Text style={{ color: color, fontFamily: fontStyle, fontSize: fontSize, textAlign: 'right', marginBottom: 40, paddingHorizontal: 8 }}>
 
                         {
-                            CONTENTAR[currentPage].slice(0, 90)
+                            CONTENTAR[currentPage].slice(0, CONTENTAR[currentPage].length - 96)
 
                         }
-                        <Text style={[styles.text, { color: color, fontFamily: fontStyle, fontSize: fontSize, textAlign: 'right' }]}>
+                        <Text style={[styles.text, { color: "red", fontFamily: fontStyle, fontSize: fontSize, textAlign: 'right' }]}>
                             {
-                                CONTENTAR[currentPage].slice(90, CONTENTAR[currentPage].length)
+                                CONTENTAR[currentPage].slice(CONTENTAR[currentPage].length - 96, CONTENTAR[currentPage].length)
                             }
                         </Text>
 
@@ -150,8 +150,8 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 18,
-        paddingBottom: 50,
-        paddingHorizontal: 5
+        paddingBottom: 30,
+        paddingHorizontal: 8
     },
 
     buttonLeft: {

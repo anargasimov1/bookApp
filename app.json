@@ -8,16 +8,17 @@
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/ebook.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anargasimov.book"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/ebook.png",
+        "foregroundImage": "./assets/splash.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.anargasimov.book"

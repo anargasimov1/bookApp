@@ -7,6 +7,7 @@ import Pages from './screens/Pages'
 import Page from './screens/Page';
 import Settings from './screens/Settings'
 import Epilog from './screens/Epilog';
+import Spalsh from './home/Spalsh';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
 
+        <Stack.Screen options={{ headerShown: false }} name='splash' component={Spalsh} />
         <Stack.Screen options={{ headerShown: false }} name="home" component={Homepage} />
         <Stack.Screen options={{ title: 'Ön Söz' }} name="head" component={HeadText} />
         <Stack.Screen options={{ title: 'Müəllif Haqqında' }} name="info" component={Info} />
@@ -26,7 +28,6 @@ const App = () => {
 
       </Stack.Navigator>
     </NavigationContainer>
-
 
   );
 }
